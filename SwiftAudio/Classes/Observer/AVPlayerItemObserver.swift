@@ -65,7 +65,7 @@ class AVPlayerItemObserver: NSObject {
         }
         observingItem.removeObserver(self, forKeyPath: AVPlayerItemKeyPath.duration, context: &AVPlayerItemObserver.context)
         observingItem.removeObserver(self, forKeyPath: AVPlayerItemKeyPath.loadedTimeRanges, context: &AVPlayerItemObserver.context)
-        observingItem.removeObserver(self, forKeyPath: AVPlayerItemKeyPath.timedMetada, context: &AVPlayerItemObserver.context)
+//        observingItem.removeObserver(self, forKeyPath: AVPlayerItemKeyPath.timedMetada, context: &AVPlayerItemObserver.context)
         self.isObserving = false
         self.observingItem = nil
     }
@@ -87,12 +87,12 @@ class AVPlayerItemObserver: NSObject {
                 self.delegate?.item(didUpdateDuration: duration.seconds)
             }
             
-        case AVPlayerItemKeyPath.timedMetada:
-            if let timedMetada = change?[.newKey] as? [AVMetadataItem]? {
-//                if timedMetada.count > 0, let metadata = timedMetada[0].value(forKey: "value") as? String{
-//                    self.delegate?.item(didUpdateTimedMetadata: metadata)
-//                }
-            }
+//        case AVPlayerItemKeyPath.timedMetada:
+//            if let timedMetada = change?[.newKey] as? [AVMetadataItem]? {
+////                if timedMetada.count > 0, let metadata = timedMetada[0].value(forKey: "value") as? String{
+////                    self.delegate?.item(didUpdateTimedMetadata: metadata)
+////                }
+//            }
             
         default: break
             

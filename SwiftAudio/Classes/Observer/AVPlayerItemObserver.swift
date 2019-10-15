@@ -15,6 +15,11 @@ protocol AVPlayerItemObserverDelegate: class {
      */
     func item(didUpdateDuration duration: Double)
     
+    /**
+     Called when the observec item updates the metadata
+     */
+    func item(didUpdateTimedMetadata metadata: String)
+    
 }
 
 /**
@@ -83,8 +88,12 @@ class AVPlayerItemObserver: NSObject {
             }
             
         case AVPlayerItemKeyPath.timedMetada:
-            print("TimedMetadata")
-            break
+            if let timedMetada = change?[.newKey] as? AVMetadataItem {
+                if let metadata = timedMetada.value(forKey: "value") as? String{
+                    self.delegate?.item(didUpdateTimedMetadata: metadata)
+                }
+            }
+            
         default: break
             
         }

@@ -9,6 +9,7 @@ import Foundation
 import MediaPlayer
 
 public typealias AudioPlayerState = AVPlayerWrapperState
+public typealias AudioPlayerMetadata = AVMetadataItem
 
 public class AudioPlayer: AVPlayerWrapperDelegate {
     
@@ -337,6 +338,10 @@ public class AudioPlayer: AVPlayerWrapperDelegate {
     
     func AVWrapper(didUpdateDuration duration: Double) {
         self.event.updateDuration.emit(data: duration)
+    }
+    
+    func AVWrapper(didUpdateTimedMetadata metadata: String) {
+        self.event.updateMetadata.emit(data: metadata)
     }
     
     func AVWrapperItemDidPlayToEndTime() {

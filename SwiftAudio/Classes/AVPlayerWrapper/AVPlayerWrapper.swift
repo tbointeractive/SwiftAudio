@@ -340,4 +340,8 @@ extension AVPlayerWrapper: AVPlayerItemObserverDelegate {
         self.delegate?.AVWrapper(didUpdateDuration: duration)
     }
     
+    func item(didUpdateTimedMetadata metadata: String) {
+        self.delegate?.AVWrapper(didUpdateTimedMetadata: metadata)
+    }
+    
 }

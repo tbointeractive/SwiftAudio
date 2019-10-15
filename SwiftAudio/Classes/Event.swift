@@ -10,7 +10,7 @@ import Foundation
 extension AudioPlayer {
     
     public typealias StateChangeEventData = (AudioPlayerState)
-    public typealias UpdateTimedMetadaEventData = (AudioPlayerState)
+    public typealias UpdateTimedMetadaEventData = (String?)
     public typealias PlaybackEndEventData = (PlaybackEndedReason)
     public typealias SecondElapseEventData = (TimeInterval)
     public typealias FailEventData = (Error?)
@@ -25,6 +25,8 @@ extension AudioPlayer {
          - Important: Remember to dispatch to the main queue if any UI is updated in the event handler.
          */
         public let stateChange: AudioPlayer.Event<StateChangeEventData> = AudioPlayer.Event()
+        
+        public let updateMetadata: AudioPlayer.Event<UpdateTimedMetadaEventData> = AudioPlayer.Event()
         
         /**
          Emitted when the playback of the player, for some reason, has stopped.

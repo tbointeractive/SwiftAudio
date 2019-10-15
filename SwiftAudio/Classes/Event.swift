@@ -10,6 +10,7 @@ import Foundation
 extension AudioPlayer {
     
     public typealias StateChangeEventData = (AudioPlayerState)
+    public typealias UpdateTimedMetadaEventData = (AudioPlayerState)
     public typealias PlaybackEndEventData = (PlaybackEndedReason)
     public typealias SecondElapseEventData = (TimeInterval)
     public typealias FailEventData = (Error?)
